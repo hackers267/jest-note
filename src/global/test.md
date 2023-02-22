@@ -79,6 +79,47 @@ test.skip('it is not snowing', () => {
 
 上面的代码只会运行*it is raining*。因为其使用了`test.skip`。
 
+## test.each
+
+当你需要使用不同的数据来运行测试的时候可以使用`test.each`。先来看示例：
+
+```js
+test.each([
+    [1,1,2],
+    [1,2,3],
+    [2,1,3]
+    ])('.add(%i, %i)', (a, b, expected) => {
+        expect(a + b).toBe(expected);
+    })
+```
+
+```js
+test.each([
+  {a: 1, b: 1, expected: 2},
+  {a: 1, b: 2, expected: 3},
+  {a: 2, b: 1, expected: 3}
+])('.add($a, $b)', ({a, b, expected}) => {
+    expect(a + b).toBe(expected);
+})
+```
+
+通过示例我们可以发现`test.each`的第一个参数是一个二维数组。其返回值接收3个参数。
+
+* 第一个参数：测试名。
+  * 其名称是可以通过`printf`的参数
+    * `%p` 美化格式
+    * `%s` 字符串
+    * `%d` 数字
+    * `%i` 整数
+    * `%f` 浮点数
+    * `%j` JSON
+    * `%o` 对象
+    * `%#` 测试的索引
+    * `%%` %
+  * 或是对象解构的参数，如`$a`,`$b`
+* 第二个参数，测试函数。
+* 第三个参数(可选)，超时时间，默认为5s。
+
 ## test.concurrent
 
 `test.concurrent`目前是一个实验性的功能。其作用是显式指定其测试开发运行。其包含的函数和`test`基本一致。只是第二个参数接收的是一个包含有断言的
