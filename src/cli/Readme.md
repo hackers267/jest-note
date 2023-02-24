@@ -101,3 +101,10 @@ pnpm test -- --参数
 显示Jest的配置内容
 
 
+### --findRelatedTests <spaceSeparatedListOfSourceFiles>
+
+查找并运行以空格分隔的一系列和源文件有关的测试。
+
+### --testNamePattern=<regex>
+
+运行测试名符合给定的正则表达式的测试。别名：`-t`。
