@@ -7,6 +7,11 @@
 - [CLI](./cli/Readme.md)
 
 ---
+# 配置
+
+- [配置](./config/ReadMe.md)
+  - [代码覆盖率](./config/coverages.md)
+---
 # 全局对象
 
 - [全局对象](./global/Readme.md)
