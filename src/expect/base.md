@@ -47,13 +47,68 @@ test("toEqual example", () => {
 
 ## toBeDefined
 
+断言一个变量或一个函数的返回値是已经定义的。比如：
+
+```ts
+test('assert toBeDefined', () => {
+    expect(1).toBeDefined()
+})
+```
+
+> 注意，如果要断言一个变量或返回值是未定义的，相比下`not.toBeDefined`，[toBeUndefined](#tobeundefined)是更好的选择。
+
 ## toBeTruthy
+
+断言一个值是真值，而不仅仅是`true`。比如：
+
+```ts
+test('assert toBeTruthy', () => {
+    expect(1).toBeTruthy();
+})
+```
+
+> 注意：在`JavaScript`中，只有`false`,`''`,`0`,`null`,`undefined`和`NaN`是假值，其余的都是真值。
+
+> 如果要判断一个值为假值，相比下`not.toBeTruthy`，[toBeFalsy](#tobefalsy)是更好的选择。
 
 ## toBeFalsy
 
+断言一个值是假值。而不仅仅是`false`。比如：
+
+```ts
+test(`assert toBeFalsy`, () => {
+    expect(0).toBeFalsy();
+})
+```
+
+> 注意：在`JavaScript`中，只有`false`,`''`,`0`,`null`,`undefined`和`NaN`是假值，其余的都是真值。
+
+> 如果要判断一个值为假值，相比下`not.toBeFalsy`，[toBeTruthy](#tobetruthy)是更好的选择。
+
 ## toBeNaN
 
+判断一个值是`NaN`。
+
+```ts
+test('assert toBeNaN', () => {
+    expect(NaN).toBeNaN();
+    expect(1).not.toBeNaN();
+})
+```
+
+> 注意，在`JavaScript`中目前有两种方法来判断一个值是不是`NaN`
+> * Number.isNaN
+> * `NaN===NaN`返回值为`false`，即`NaN`是JavaScript中唯一一个不等于自身的。
+
+
 ## toBeNull
+
+判断一个值是`null`。`toBeNull`在逻辑上等价于`toBe(null)`。但当断言失败的时候，`toBeNull`的提示信息更加友好。
+```ts
+test('assert toBeNull', ()=>{
+    expect(null).toBeNull();
+})
+```
 
 ## toBeCloseTo
 
@@ -75,10 +130,50 @@ test('assert 0.1+0.2 and 0.3', () => {
 
 ## toBeUndefined
 
+用于断言一个变量或返回值是未定义的。比如：
+
+```ts
+test('assert toBeUndefined', () => {
+    let a;
+    expect(a).toBeUndefined();
+})
+```
+
+> 注意，如果要断言一个变量或返回值是已定义的，相比下`.not.toBeUndefined`，[toBeDefined()](#tobedefined)是更好的选择。
+
 ## toBeGreaterThan
 
+使用`received>expected`来进行断言。
+比如：
+```ts
+expect('assert toBeGreaterThan', ()=>{
+    expect(12).toBeGreaterThan(10)
+})
+```
+
 ## toBeGreaterThanOrEqual
+使用`received>=expected`进行断言。
+比如：
+```ts
+expect('assert toBeGreaterThanOrEqual', () => {
+    expect(12).toBeGreaterThanOrEqual(12);
+})
+```
 
 ## toBeLessThan
+使用`received<expected`进行断言。
+比如：
+```ts
+expect('assert toBeLessThan', ()=>{
+    expect(12).toBeLessThan(15)
+})
+```
 
 ## toBeLessThanOrEqual
+使用`recieved<=expected`进行断言。
+比如：
+```ts
+expect('assert toBeLessThanOrEqual', ()=>{
+    expect(12).toBeLessThanOrEqual(12)
+})
+```
