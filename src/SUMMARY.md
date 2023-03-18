@@ -24,3 +24,5 @@
 
 ---
 - [测试异步函数](./async/Readme.md)
+- [mock](./mock/Readme.md)
+  - [location](./mock/location.md)
