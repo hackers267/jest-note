@@ -5,3 +5,4 @@
 常用的Mock场景：
 
 - [location](./location)
+- [date](./date.md)
